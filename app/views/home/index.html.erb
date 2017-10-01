@@ -1,21 +1,28 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<div class="col-md-12">
-  <div class="row">
-    <div class="card" class="col-md-3">
-      <h2>User Name</h2>
-      <p>Test Paragraph</p>
-    </div>
-    <div class="card" class="col-md-3">
-      <h2>Password</h2>
-      <p>Test Paragraph</p>
-    </div>
-    <div class="card" class="col-md-3">
-      <h2>Recent Posts</h2>
-      <p>Test Paragraph</p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="card" class="col-md-3">
+        <h2>User Name</h2>
+        <p>Test Paragraph</p>
+      </div>
+      <div class="card" class="col-md-3">
+        <h2>Password</h2>
+        <p>Test Paragraph</p>
+      </div>
+      <div class="card" class="col-md-3">
+        <% if current_user %>
+          <h2>Welcome! <%= current_user.email %> </h2>
+        <% end %>
+
+      </div>
     </div>
   </div>
-</div>
 
-</div class="card" class="col-md-3" >
-<h2>SHOW ME WHAT YOU GOT</h2>
+  </div class="card" class="col-md-3" >
+  <h2>SHOW ME WHAT YOU GOT</h2>
+  <% unless current_user %>
+    <%= link_to "Sign in", new_user_session_path, class: "btn btn-md btn-block btn-success col-md-6 col-md-offset-3" %>
+  <% else %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-md btn-block btn-danger col-md-6 col-md-offset-3"%>
+  <% end %>
+</div>
