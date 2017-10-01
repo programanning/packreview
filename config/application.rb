@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Taxationistheft
   class Application < Rails::Application
+    require 'carrierwave/orm/activerecord'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
