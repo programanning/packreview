@@ -1,6 +1,17 @@
 <div class="row">
   <div class="col-md-3" style="background-color: #003366; height: 100vh;">
+    <% if current_user %>
+      <%= image_tag(current_user.avatar.url, class: "col-md-12") %>
+      <div class="card">
+        <h1>  <%= current_user.email %>  </h1>
+        <%= current_user.first_name %>, <%= current_user.last_name %>
+        
+      </div>
+    <% else %>
+        <%= link_to "Sign in", new_user_session_path, class: "btn btn-md btn-block btn-success pull-right" %>
+    <% end %>
   </div>
+
   <div class="col-md-6" style="background-color: #CCC; height: 100vh;">
   </div>
   <div class="col-md-3" style="background-color: #003366; height: 100vh;">
